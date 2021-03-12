@@ -5,7 +5,7 @@
 #include "cxxDevice_impl.hpp"
 
 extern "C"{
-	std::string CxxDeviceJsonOutput;
+	std::string CxxDeviceJsonOutput = "{}";
 	char* passJson(const char* funcname,const char* json_ptr){
 		std::string json_str(json_ptr);
 		nlohmann::json j = nlohmann::json::parse(json_str);
