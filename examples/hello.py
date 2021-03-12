@@ -2,9 +2,6 @@ import sys
 sys.path.append("../build/")
 import cxxDevice as cxx
 
-
-
-
 if __name__ == '__main__':
 
 	d = {
