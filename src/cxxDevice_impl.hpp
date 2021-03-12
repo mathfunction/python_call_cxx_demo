@@ -8,11 +8,11 @@
 
 
 inline nlohmann::json CxxDeviceFuncList(const std::string funcname,nlohmann::json &j){
-	if (funcname == "print"){
+	if(funcname == "print"){
 		std::cout << "=====================================================" << "\n";
 		std::cout << j  << "\n";
 		std::cout << "=====================================================" << "\n";
-	}
+	}//endif
 
 	if (funcname == "test"){
 		j["test"] = "ok";

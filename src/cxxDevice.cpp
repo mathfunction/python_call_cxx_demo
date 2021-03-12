@@ -7,8 +7,7 @@
 extern "C"{
 	std::string CxxDeviceJsonOutput = "{}";
 	char* passJson(const char* funcname,const char* json_ptr){
-		std::string json_str(json_ptr);
-		nlohmann::json j = nlohmann::json::parse(json_str);
+		nlohmann::json j = nlohmann::json::parse(json_ptr);
 		CxxDeviceFuncList(funcname,j);  // practical implementation 
 		CxxDeviceJsonOutput = j.dump();
 		return &CxxDeviceJsonOutput[0];
