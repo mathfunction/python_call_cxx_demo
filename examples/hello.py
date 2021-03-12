@@ -1,5 +1,5 @@
 import sys
-sys.path.append("../src/")
+sys.path.append("../build/")
 import cxxDevice as cxx
 
 
@@ -11,4 +11,5 @@ if __name__ == '__main__':
 		"apple":1,
 		"banana":2.0
 	}
+	d = cxx.passJson("test",d)
 	cxx.passJson("print",d)

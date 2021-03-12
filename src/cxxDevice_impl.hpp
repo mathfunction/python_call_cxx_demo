@@ -12,7 +12,12 @@ inline nlohmann::json CxxDeviceFuncList(const std::string funcname,nlohmann::jso
 		std::cout << "=====================================================" << "\n";
 		std::cout << j  << "\n";
 		std::cout << "=====================================================" << "\n";
-	}//endif
+	}
+
+	if(funcname == "test"){
+		j["test"] = "ok";
+	}
+
 	return j;
 }//endPyCableFuncList
 
