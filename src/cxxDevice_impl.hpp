@@ -17,8 +17,7 @@ inline nlohmann::json CxxDeviceJsonFuncList(const std::string funcname,nlohmann:
 
 	if (funcname == "test"){
 		j["test"] = "ok";
-	}//endif
-
+	}//endifs
 	return j;
 }//end
 
