@@ -26,7 +26,6 @@ def passJson(funcname,d):
 	)
 
 
-
 def passFloatNumpySameShape(funcname,np_array):
 	fptr = cxxDevice.passFloatPointer(
 		funcname.encode('utf-8'),
