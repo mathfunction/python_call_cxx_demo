@@ -12,3 +12,7 @@ if __name__ == '__main__':
 	d = cxx.passJson("test",d)
 	cxx.passJson("print",d)
 	
+
+	cxx.passStr("print","testABC");
+
+	
