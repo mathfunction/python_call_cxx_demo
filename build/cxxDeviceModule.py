@@ -35,6 +35,7 @@ def passFloatNumpySameShape(funcname,np_array):
 
 
 
+
 def passStr(funcname,_str):
 	return cxxDevice.passString(
 		funcname.encode('utf-8'),

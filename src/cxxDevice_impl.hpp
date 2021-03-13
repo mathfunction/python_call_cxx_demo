@@ -1,5 +1,5 @@
 /*==================================================
-	implement c++ code here !! 
+	implement c++ code connection here !!! 
 ====================================================*/
 
 #ifndef __CXXDEVICE_IMPL_HPP__
