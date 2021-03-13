@@ -5,7 +5,10 @@
 	- String
  	- Json 
 
+
 ======================================================================================*/
+#include <iostream>
+#include <vector>
 #include "json.hpp"  // https://github.com/nlohmann/json/tree/develop/include/nlohmann
 #include "cxxDevice_impl.hpp"
 
@@ -27,7 +30,14 @@ extern "C"{
 		return &CxxDeviceJsonOutput[0];
 	}//endhandleJson
 
-
+	
+	std::vector<float> CxxDeviceFloatVectorInput;
+	std::vector<float> CxxDeviceFloatVectorOutput;
+	float* passFloatPointer(const char* funcname,float* f,size_t n){
+		CxxDeviceFloatVectorInput.assign(f,f+n);
+		CxxDeviceFloatVectorOutput = CxxDeviceFloatVectorFuncList(funcname,CxxDeviceFloatVectorInput);
+		return CxxDeviceFloatVectorOutput.data();
+	}//end_
 
 
 };
