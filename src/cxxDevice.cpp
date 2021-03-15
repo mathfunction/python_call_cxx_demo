@@ -17,10 +17,13 @@ namespace CxxDevice{
 	nlohmann::json JsonInput,JsonOutput;
 	std::string JsonStrOutput;
 	std::vector<float> FloatVectorInput,FloatVectorOutput;
+	std::vector<int> IntVectorInput,IntVectorOutput;
 };
 
 
+
 extern "C"{
+
 
 	const char* passString(const char* funcname,const char* c_str){
 		CxxDevice::StringInput = std::string(c_str);
@@ -35,6 +38,13 @@ extern "C"{
 		CxxDevice::JsonStrOutput = CxxDevice::JsonOutput.dump();
 		return CxxDevice::JsonStrOutput.data();
 	}//endhandleJson
+	int* passIntPointer(const char* funcname,int *iptr,size_t n){
+		CxxDevice::IntVectorInput.assign(iptr,iptr+n);
+		CxxDevice::IntVectorOutput= CxxDevice::IntVectorFuncList(funcname,CxxDevice::IntVectorInput);
+		return CxxDevice::IntVectorOutput.data();
+	}//end_pass
+	
+	
 
 	float* passFloatPointer(const char* funcname,float* f,size_t n){
 		CxxDevice::FloatVectorInput.assign(f,f+n);

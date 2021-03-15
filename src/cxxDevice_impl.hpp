@@ -42,10 +42,31 @@ namespace CxxDevice{
 			}//endfor
 			std::cout << "=====================================================\n";
 			return v;
+		}else if(funcname == "sum->1"){
+			float _sum = 0.0;
+			for(int i=0;i<v.size();i++){
+				_sum += v[i];
+			}//endfor
+			return {_sum};
 		}else{
 			return v; // default return 
 		}//end_else
 	}
+
+
+	inline std::vector<int> IntVectorFuncList(const std::string funcname,std::vector<int> &v){
+		if(funcname == "print"){
+			std::cout << "=====================================================\n";
+			for(int i=0;i<v.size();i++){
+				std::cout << "[" << i << "] = " << v[i] << "\n";
+			}//endfor
+			std::cout << "=====================================================\n";
+			return v;
+		}else{
+			return v; // default return 
+		}//end_else
+	}//end_IntVectorFuncList
+
 
 
 };
