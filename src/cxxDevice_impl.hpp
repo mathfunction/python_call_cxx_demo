@@ -7,50 +7,48 @@
 
 
 //=====================================================================================================================
+namespace CxxDevice{
 
-inline nlohmann::json CxxDeviceJsonFuncList(const std::string funcname,nlohmann::json &j){
-	if(funcname == "print"){
-		std::cout << "=====================================================" << "\n";
-		std::cout << j  << "\n";
-		std::cout << "=====================================================" << "\n";
-	}//endif
+	inline nlohmann::json JsonFuncList(const std::string funcname,nlohmann::json &j){
+		if(funcname == "print"){
+			std::cout << "=====================================================\n";
+			std::cout << j  << "\n";
+			std::cout << "=====================================================\n";
+			return j;
+		}else{
+			return j; // default return 
+		}//end_else
+	}//end
 
-	if (funcname == "test"){
-		j["test"] = "ok";
-	}//endifs
-	return j;
-}//end
+	//==================================================================================================================
 
-//==================================================================================================================
-
-inline std::string CxxDeviceStringFuncList(const std::string funcname,std::string &str){
-	if(funcname == "print"){
-		str = "[ pass this string to c++ ]";
-		std::cout  << str << std::endl;
-	}//endif
-	return str;
-}//end
+	inline std::string StringFuncList(const std::string funcname,std::string &str){
+		if(funcname == "print"){
+			std::cout << "=====================================================\n";
+			std::cout  << str << std::endl;
+			std::cout << "=====================================================\n";
+			return str;
+		}else{
+			return str; // default return 
+		}//end_else
+	}//end
 
 
-inline std::vector<float> CxxDeviceFloatVectorFuncList(const std::string funcname,std::vector<float> &v){
-	
-	if(funcname == "print"){
-		for(int i=0;i<v.size();i++){
-			std::cout << "[" << i << "] = " << v[i] << "\n";
-		}//endfor
+	inline std::vector<float> FloatVectorFuncList(const std::string funcname,std::vector<float> &v){
+		if(funcname == "print"){
+			std::cout << "=====================================================\n";
+			for(int i=0;i<v.size();i++){
+				std::cout << "[" << i << "] = " << v[i] << "\n";
+			}//endfor
+			std::cout << "=====================================================\n";
+			return v;
+		}else{
+			return v; // default return 
+		}//end_else
 	}
 
-	if(funcname == "zero"){
-		for(int i=0;i<v.size();i++){
-			v[i] = 0.0;
-		}//endfor
-	}
 
-	return v;
-}
-
-
-
+};
 //======================================================================================================================
 
 #endif

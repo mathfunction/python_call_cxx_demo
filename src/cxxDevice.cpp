@@ -1,5 +1,5 @@
 /*===================================================================================
- 	Python Call C++ 
+ 	Python Call C++ double Copy framework
 	
 	Passing :
 	- String
@@ -12,32 +12,36 @@
 #include "json.hpp"  // https://github.com/nlohmann/json/tree/develop/include/nlohmann
 #include "cxxDevice_impl.hpp"
 
+namespace CxxDevice{
+	std::string StringInput,StringOutput;
+	nlohmann::json JsonInput,JsonOutput;
+	std::string JsonStrOutput;
+	std::vector<float> FloatVectorInput,FloatVectorOutput;
+};
+
+
 extern "C"{
 
-	std::string CxxDeviceStringOutput = "";
-	char* passString(const char* funcname,const char* c_str){
-		std::string str(c_str);
-		CxxDeviceStringOutput = CxxDeviceStringFuncList(funcname,str);
-		return &CxxDeviceStringOutput[0];
+	const char* passString(const char* funcname,const char* c_str){
+		CxxDevice::StringInput = std::string(c_str);
+		CxxDevice::StringOutput = CxxDevice::StringFuncList(funcname,CxxDevice::StringInput);
+		return CxxDevice::StringOutput.data();
 	}//end_passString
 
 
-	std::string CxxDeviceJsonOutput = "{}";
-	char* passJson(const char* funcname,const char* json_ptr){
-		nlohmann::json j = nlohmann::json::parse(json_ptr);
-		CxxDeviceJsonFuncList(funcname,j);  // practical implementation 
-		CxxDeviceJsonOutput = j.dump();
-		return &CxxDeviceJsonOutput[0];
+	const char* passJson(const char* funcname,const char* json_ptr){
+		CxxDevice::JsonInput = nlohmann::json::parse(json_ptr);
+		CxxDevice::JsonOutput = CxxDevice::JsonFuncList(funcname,CxxDevice::JsonInput);  // practical implementation 
+		CxxDevice::JsonStrOutput = CxxDevice::JsonOutput.dump();
+		return CxxDevice::JsonStrOutput.data();
 	}//endhandleJson
 
-	
-	std::vector<float> CxxDeviceFloatVectorInput;
-	std::vector<float> CxxDeviceFloatVectorOutput;
 	float* passFloatPointer(const char* funcname,float* f,size_t n){
-		CxxDeviceFloatVectorInput.assign(f,f+n);
-		CxxDeviceFloatVectorOutput = CxxDeviceFloatVectorFuncList(funcname,CxxDeviceFloatVectorInput);
-		return CxxDeviceFloatVectorOutput.data();
+		CxxDevice::FloatVectorInput.assign(f,f+n);
+		CxxDevice::FloatVectorOutput = CxxDevice::FloatVectorFuncList(funcname,CxxDevice::FloatVectorInput);
+		return CxxDevice::FloatVectorOutput.data();
 	}//end_
+
 
 
 };
