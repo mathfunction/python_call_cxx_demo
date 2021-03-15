@@ -53,6 +53,12 @@ def passFloatNumpy(funcname,np_input,np_output_dim):
 
 
 
+def passIntNumpy(funcname,np_input,np_output_dim):
+	fptr = cxxDevice.passFloatPointer(
+		funcname.encode('utf-8'),
+		np_input.astype(np.int32).ctypes.data_as(ctypes.POINTER(ctypes.c_int)),np_input.size
+	)
+	return np.ctypeslib.as_array(fptr,(np.prod(np_output_dim),)).copy().reshape(np_output_dim)
 
 
 
