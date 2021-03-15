@@ -52,6 +52,11 @@ def passFloatNumpy(funcname,np_input,np_output_dim):
 	return np.ctypeslib.as_array(fptr,(np.prod(np_output_dim),)).copy().reshape(np_output_dim)
 
 
+
+
+
+
+
 def passStr(funcname,_str):
 	return cxxDevice.passString(
 		funcname.encode('utf-8'),
